@@ -323,6 +323,8 @@ abstract class _$$DoneImplCopyWith<$Res> {
       __$$DoneImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Weather weather});
+
+  $WeatherCopyWith<$Res> get weather;
 }
 
 /// @nodoc
@@ -335,14 +337,22 @@ class __$$DoneImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weather = freezed,
+    Object? weather = null,
   }) {
     return _then(_$DoneImpl(
-      freezed == weather
+      null == weather
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
               as Weather,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WeatherCopyWith<$Res> get weather {
+    return $WeatherCopyWith<$Res>(_value.weather, (value) {
+      return _then(_value.copyWith(weather: value));
+    });
   }
 }
 
@@ -364,12 +374,11 @@ class _$DoneImpl extends _Done {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DoneImpl &&
-            const DeepCollectionEquality().equals(other.weather, weather));
+            (identical(other.weather, weather) || other.weather == weather));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(weather));
+  int get hashCode => Object.hash(runtimeType, weather);
 
   @JsonKey(ignore: true)
   @override

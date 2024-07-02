@@ -1,15 +1,14 @@
 import 'dart:math';
-
-import 'package:example/weather/domain/weather.dart';
-import 'package:example/weather/domain/weather_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:example/weather/infrastructure/weather_service.dart';
+import 'package:optival/weather/domain/weather.dart';
+import 'package:optival/weather/domain/weather_failure.dart';
+import 'package:optival/weather/infrastructure/weather_service.dart';
 
 class WeatherRepository {
   WeatherRepository(this.service);
-  
+
   final WeatherService service;
-  
+
   Future<Either<WeatherFailure, Weather>> fetchWeather() async {
     int randomResponse = Random().nextInt(6);
 

@@ -1,19 +1,13 @@
-import 'package:example/core/presentation/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:optival/core/presentation/app_router.dart';
 
-class AppWidget extends HookWidget {
+class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
-  final appRouter = useState(AppRouter());
-    
     return MaterialApp.router(
-      theme: ThemeData.dark(),
-      routeInformationParser: appRouter.value.defaultRouteParser(),
-      routerDelegate: appRouter.value.delegate(),
+      routerConfig: goRouter,
     );
   }
 }

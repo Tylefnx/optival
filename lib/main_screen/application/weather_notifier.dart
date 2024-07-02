@@ -1,7 +1,7 @@
-import 'package:example/weather/domain/weather.dart';
-import 'package:example/weather/infrastructure/weather_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:optival/weather/domain/weather.dart';
+import 'package:optival/weather/infrastructure/weather_repository.dart';
 
 part 'weather_notifier.freezed.dart';
 

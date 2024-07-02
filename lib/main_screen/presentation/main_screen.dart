@@ -1,7 +1,7 @@
-import 'package:example/main_screen/presentation/weather_widget.dart';
-import 'package:example/weather/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:optival/main_screen/presentation/weather_widget.dart';
+import 'package:optival/weather/shared/providers.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -11,7 +11,6 @@ class MainPage extends ConsumerStatefulWidget {
 }
 
 class _MainPageState extends ConsumerState<MainPage> {
-
   @override
   void initState() {
     super.initState();

@@ -1,13 +1,22 @@
-import 'package:auto_route/auto_route.dart';
-part 'app_router.gr.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:optival/main_screen/presentation/main_screen.dart';
 
-@AutoRouterConfig(replaceInRouteName: 'Page,Route')
-class AppRouter extends _$AppRouter {
-  @override
-  RouteType get defaultRouteType =>
-      const RouteType.adaptive(); //.cupertino, .adaptive ..etc
-
-  final List<AutoRoute> routes = [
-    //routes here
-  ];
-}
+final GoRouter goRouter = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const MainPage();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'details',
+          builder: (BuildContext context, GoRouterState state) {
+            return const MainPage();
+          },
+        ),
+      ],
+    ),
+  ],
+);

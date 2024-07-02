@@ -1,5 +1,6 @@
-import 'package:example/weather/domain/weather.dart';
 import 'dart:math';
+
+import 'package:optival/weather/domain/weather.dart';
 
 class WeatherService {
   Weather fetchWeather() {
