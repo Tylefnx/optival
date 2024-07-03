@@ -40,7 +40,7 @@ class AnaltyzerSetup extends HookWidget {
     var spanFSelectedUnit = useState('MHz');
     var bwF = useState(100);
     var bwFSelectedUnit = useState('MHz');
-    ValueNotifier<SerialPort> serialPort = useState(SerialPort('asdf'));
+    ValueNotifier<SerialPort> serialPort = useState(SerialPort('/dev/ttyS0'));
     return Column(
       children: [
         const Text(
