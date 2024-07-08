@@ -2,7 +2,8 @@
 //
 #pragma code_page(65001)
 #include "resource.h"
-
+#define MANIFEST_RESOURCE_ID 1
+1 RT_MANIFEST "app.manifest"
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //

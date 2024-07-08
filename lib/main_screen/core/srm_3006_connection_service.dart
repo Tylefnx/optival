@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_libserialport/flutter_libserialport.dart';
 import 'package:optival/main_screen/core/shared/int2str_converter.dart';
 
