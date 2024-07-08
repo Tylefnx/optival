@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_libserialport/flutter_libserialport.dart';
 import 'package:optival/main_screen/core/frequency_service.dart';
+import 'package:optival/main_screen/core/srm_3006_connection_service.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -34,13 +35,21 @@ class AnaltyzerSetup extends HookWidget {
   @override
   Widget build(BuildContext context) {
     var avgF = useState(100);
-    var avgFSelectedUnit = useState('MHz');
+    var avgFSelectedUnit = useState('mHz');
     ValueNotifier<List<FlSpot>> chartData = useState([]);
     var spanF = useState(100);
-    var spanFSelectedUnit = useState('MHz');
+    var spanFSelectedUnit = useState('mHz');
     var bwF = useState(100);
-    var bwFSelectedUnit = useState('MHz');
+    var bwFSelectedUnit = useState('mHz');
     ValueNotifier<SerialPort> serialPort = useState(SerialPort('/dev/ttyS0'));
+    ValueNotifier<List<String>> availablePorts = useState([]);
+    useEffect(
+      () {
+        initPorts(availablePorts, serialPort);
+        return;
+      },
+      [],
+    );
     return Column(
       children: [
         const Text(
@@ -61,8 +70,8 @@ class AnaltyzerSetup extends HookWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SelectFrequenceWidget(
-            selectedFrequencyRange: avgF,
-            selectedUnit: avgFSelectedUnit,
+            selectedFrequencyRange: spanF,
+            selectedUnit: spanFSelectedUnit,
           ),
         ),
         const Text(
@@ -72,8 +81,8 @@ class AnaltyzerSetup extends HookWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SelectFrequenceWidget(
-            selectedFrequencyRange: spanF,
-            selectedUnit: spanFSelectedUnit,
+            selectedFrequencyRange: bwF,
+            selectedUnit: bwFSelectedUnit,
           ),
         ),
         MeasureButton(
@@ -126,7 +135,7 @@ class SelectFrequenceWidget extends StatelessWidget {
         Expanded(
           child: DropdownButton<String>(
             value: selectedUnit.value,
-            items: ['kHz', 'MHz', 'GHz'].map((String unit) {
+            items: ['kHz', 'mHz', 'gHz'].map((String unit) {
               return DropdownMenuItem<String>(
                 value: unit,
                 child: Text(unit),

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_libserialport/flutter_libserialport.dart';
@@ -16,10 +14,12 @@ Future<void> fetchMeasurementData(
   ValueNotifier<List<FlSpot>> chartData,
   ValueNotifier<SerialPort> serialPort,
 ) async {
-  sendCommand(serialPort,
+  print(
       'SPECTRUM_CONFIG $avgF${unitToPowerCommand(avgFselectedUnit)},$spanF${unitToPowerCommand(spanFselectedUnit)},$bwF${unitToPowerCommand(bwFselectedUnit)},OFF,500,46;');
-  sendCommand(serialPort, 'MEAS_START;');
-  sendCommand(serialPort, 'MEAS_GET?');
+  //sendCommand(serialPort,
+  //    'SPECTRUM_CONFIG $avgF${unitToPowerCommand(avgFselectedUnit)},$spanF${unitToPowerCommand(spanFselectedUnit)},$bwF${unitToPowerCommand(bwFselectedUnit)},OFF,500,46;');
+  //sendCommand(serialPort, 'MEAS_START;');
+  //sendCommand(serialPort, 'MEAS_GET?');
   chartData.value = createChartData();
 }
 // TODO: Implement and try with the real data
