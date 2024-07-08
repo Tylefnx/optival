@@ -33,7 +33,9 @@ void initSerialPort(ValueNotifier<SerialPort> serialPort,
 }
 
 void sendCommand(ValueNotifier<SerialPort> serialPort, String command) {
+  print('works');
   serialPort.value.openWrite();
+  print('successfully opened port');
   var cmd = convertStringToUint8List(command);
   serialPort.value.write(cmd);
   serialPort.value.close();

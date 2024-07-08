@@ -16,8 +16,8 @@ Future<void> fetchMeasurementData(
 ) async {
   sendCommand(serialPort,
       'SPECTRUM_CONFIG $avgF${unitToPowerCommand(avgFselectedUnit)},$spanF${unitToPowerCommand(spanFselectedUnit)},$bwF${unitToPowerCommand(bwFselectedUnit)},OFF,500,46;');
-  //sendCommand(serialPort, 'MEAS_START;');
-  //sendCommand(serialPort, 'MEAS_GET?');
+  sendCommand(serialPort, 'MEAS_START;');
+  sendCommand(serialPort, 'MEAS_GET?');
   chartData.value = createChartData();
 }
 // TODO: Implement and try with the real data
