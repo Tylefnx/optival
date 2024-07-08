@@ -45,7 +45,8 @@ class AnaltyzerSetup extends HookWidget {
     ValueNotifier<List<String>> availablePorts = useState([]);
     useEffect(
       () {
-        initPorts(availablePorts, serialPort);
+        initPorts(availablePorts);
+        initSerialPort(serialPort, availablePorts);
         return;
       },
       [],

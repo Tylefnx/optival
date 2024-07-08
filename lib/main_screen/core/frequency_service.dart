@@ -14,10 +14,8 @@ Future<void> fetchMeasurementData(
   ValueNotifier<List<FlSpot>> chartData,
   ValueNotifier<SerialPort> serialPort,
 ) async {
-  print(
+  sendCommand(serialPort,
       'SPECTRUM_CONFIG $avgF${unitToPowerCommand(avgFselectedUnit)},$spanF${unitToPowerCommand(spanFselectedUnit)},$bwF${unitToPowerCommand(bwFselectedUnit)},OFF,500,46;');
-  //sendCommand(serialPort,
-  //    'SPECTRUM_CONFIG $avgF${unitToPowerCommand(avgFselectedUnit)},$spanF${unitToPowerCommand(spanFselectedUnit)},$bwF${unitToPowerCommand(bwFselectedUnit)},OFF,500,46;');
   //sendCommand(serialPort, 'MEAS_START;');
   //sendCommand(serialPort, 'MEAS_GET?');
   chartData.value = createChartData();
