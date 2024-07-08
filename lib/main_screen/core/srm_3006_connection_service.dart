@@ -42,5 +42,7 @@ void sendCommand(ValueNotifier<SerialPort> serialPort, String command) {
 
 void readData(ValueNotifier<SerialPort> serialPort) {
   final reader = SerialPortReader(serialPort.value);
-  reader.stream.listen((data) {});
+  reader.stream.listen((data) {
+    print(data);
+  });
 }

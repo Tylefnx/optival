@@ -41,12 +41,16 @@ class AnaltyzerSetup extends HookWidget {
     var spanFSelectedUnit = useState('mHz');
     var bwF = useState(100);
     var bwFSelectedUnit = useState('mHz');
-    ValueNotifier<SerialPort> serialPort = useState(SerialPort('/dev/ttyS0'));
+    ValueNotifier<SerialPort> serialPort = useState(SerialPort(''));
     ValueNotifier<List<String>> availablePorts = useState([]);
     useEffect(
       () {
         initPorts(availablePorts);
         initSerialPort(serialPort, availablePorts);
+        AppLifecycleListener(
+          onInactive: () => serialPort.value.close,
+          onResume: () => serialPort.value.close,
+        );
         return;
       },
       [],
